@@ -1938,6 +1938,8 @@ input::-moz-focus-inner {
   right: 0;
   bottom: 0;
   left: 50%;
+  opacity: 75%;
+  filter: grayscale(75%);
 }
 
 .intro-pic::before {
@@ -2961,6 +2963,348 @@ input::-moz-focus-inner {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.isotope-filters {
+  position: relative;
+}
+
+.isotope-filters > * {
+  margin-top: 0;
+  vertical-align: middle;
+}
+
+.isotope-filters .inline-list {
+  position: relative;
+  word-spacing: 0;
+}
+
+.isotope-filters .inline-list li {
+  display: inline-block;
+}
+
+.isotope-filters .inline-list a {
+  position: relative;
+  transition: .3s;
+  color: #cccccc;
+}
+
+.isotope-filters .inline-list .isotope-filters-trigger {
+  display: none;
+}
+
+* + .isotope-filters {
+  margin-top: 20px;
+}
+
+h3 + .isotope-filters {
+  margin-top: 14px;
+}
+
+.isotope-filters-modern .inline-list {
+  transform: translate3d(0, -10px, 0);
+  margin-bottom: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.isotope-filters-modern .inline-list > * {
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.isotope-filters-modern .inline-list > li {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
+
+.isotope-filters-modern .inline-list a {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.isotope-filters-modern .inline-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  transition: .4s;
+  background: #6689ff;
+}
+
+.isotope-filters-modern .inline-list a:hover {
+  color: #6689ff;
+}
+
+.isotope-filters-modern .inline-list a.active::after {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .isotope-filters-modern .inline-list {
+    transform: translate3d(0, -10px, 0);
+    margin-bottom: -10px;
+    margin-left: -23px;
+    margin-right: -23px;
+  }
+  .isotope-filters-modern .inline-list > * {
+    margin-top: 10px;
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+}
+
+.isotope-modern-wrap [class*='col'] {
+  margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+  .isotope-modern-wrap [class*='col'] {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  html:not(.tablet):not(.mobile) .isotope-modern-wrap [class*='col'] {
+    margin-top: 0;
+  }
+}
+
+.isotope-condensed {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.isotope-condensed .row > * {
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+* + .isotope {
+  margin-top: 45px;
+}
+
+* + .isotope-condensed {
+  margin-top: 30px;
+}
+
+@media (max-width: 991px) {
+  .isotope-condensed {
+    padding: 0 0 30px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .isotope-condensed .row.row-condensed > [class*='col'] {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .isotope-condensed .row.row-condensed > [class*='col'] + [class*='col'] {
+    margin-top: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  * + .isotope-condensed {
+    margin-top: 50px;
+  }
+}
+
+.isotope-filters .isotope-filters-toggle .icon {
+  top: -2px;
+  transition: transform .2s ease;
+}
+
+.isotope-filters .isotope-filters-toggle.button-icon-right .icon {
+  margin-left: 8px;
+  padding-left: 0;
+}
+
+.isotope-filters .isotope-filters-toggle.active .icon {
+  transform: rotate(-180deg);
+}
+
+[class*='isotope-filters-list'] {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  max-width: 280px;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #9b9b9b;
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.17);
+  transform: translate3d(-50%, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease-in-out;
+  z-index: 1;
+}
+
+[class*='isotope-filters-list'].active {
+  opacity: 1;
+  visibility: visible;
+}
+
+[class*='isotope-filters-list'] a {
+  display: block;
+  padding: 9px 5px 5px;
+}
+
+[class*='isotope-filters-list'] a, [class*='isotope-filters-list'] a:focus, [class*='isotope-filters-list'] a:active {
+  color: inherit;
+}
+
+[class*='isotope-filters-list'] a:hover {
+  color: #ffffff;
+}
+
+[class*='isotope-filters-list'] a:hover {
+  color: #6689ff;
+}
+
+[class*='isotope-filters-list'] a.active {
+  color: #ffffff;
+  background: #6689ff;
+}
+
+@media (min-width: 992px) {
+  .isotope-filters-list-classic li a {
+    min-width: 158px;
+  }
+  .isotope-filters {
+    overflow: hidden;
+  }
+  [class*='isotope-filters-list'] {
+    position: static;
+    text-align: center;
+    max-width: none;
+    top: auto;
+    left: auto;
+    width: auto;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+    transform: none;
+    visibility: visible;
+    opacity: 1;
+  }
+  .isotope-filters-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: -21px;
+    margin-right: -21px;
+    margin-bottom: -5px;
+  }
+  .isotope-filters-list > * {
+    margin-bottom: 5px;
+  }
+  .isotope-filters-list > li {
+    list-style-type: none;
+    position: relative;
+    padding: 0 24px;
+  }
+  .isotope-filters-list > li + li::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: -2px;
+    height: 15px;
+    width: 1px;
+    background: #d7d7d7;
+  }
+  .isotope-filters-list a {
+    display: inline;
+    padding: 0;
+  }
+  .isotope-filters-list a, .isotope-filters-list a:focus, .isotope-filters-list a:active {
+    color: inherit;
+  }
+  .isotope-filters-list a:hover {
+    color: #ffa400;
+  }
+  .isotope-filters-list a.active {
+    color: #ffa400;
+    background: transparent;
+  }
+  .isotope-filters-list-2 a, .isotope-filters-list-2 a:focus, .isotope-filters-list-2 a:active {
+    color: inherit;
+  }
+  .isotope-filters-list-2 a:hover {
+    color: #ffa400;
+  }
+  .isotope-filters-list-2 a.active {
+    color: #ffa400;
+  }
+  .isotope-filters-list-classic {
+    text-align: right;
+    font-size: 16px;
+    letter-spacing: .075em;
+    margin-bottom: -10px;
+    margin-left: -8px;
+  }
+  .isotope-filters-list-classic:empty {
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+  .isotope-filters-list-classic > * {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 8px;
+  }
+  .isotope-filters-list-classic li a {
+    position: relative;
+    text-align: center;
+    padding: 13px 14px 8px;
+    color: #151515;
+    border: 2px solid #151515;
+  }
+  .isotope-filters-list-classic li a::before, .isotope-filters-list-classic li a::after {
+    position: absolute;
+    content: '';
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    border: 2px solid transparent;
+    transition: color .2s ease-in-out, transform .3s ease;
+    will-change: transform;
+  }
+  .isotope-filters-list-classic li a::before {
+    transform: scaleX(0);
+  }
+  .isotope-filters-list-classic li a::after {
+    transform: scaleY(0);
+  }
+  .isotope-filters-list-classic li a:hover, .isotope-filters-list-classic li a.active {
+    color: #ffa400;
+    background: transparent;
+    border-color: transparent;
+  }
+  .isotope-filters-list-classic li a:hover::before, .isotope-filters-list-classic li a:hover::after, .isotope-filters-list-classic li a.active::before, .isotope-filters-list-classic li a.active::after {
+    transform: none;
+  }
+  .isotope-filters-list-classic li a:hover::before, .isotope-filters-list-classic li a.active::before {
+    border-color: #ffa400 transparent #ffa400 transparent;
+  }
+  .isotope-filters-list-classic li a:hover::after, .isotope-filters-list-classic li a.active::after {
+    border-color: transparent #ffa400 transparent #ffa400;
+  }
+  .isotope-filters .isotope-filters-toggle {
+    display: none;
+  }
 }
 
 /* item-folio thumb on hover 
