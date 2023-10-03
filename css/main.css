@@ -3178,6 +3178,7 @@ h3 + .isotope-filters {
 }
 
 @media (min-width: 992px) {
+
   .isotope-filters-list-classic li a {
     min-width: 158px;
   }
@@ -3769,7 +3770,7 @@ h3 + .isotope-filters {
 .s-contact {
   padding-top: 18.4rem;
   padding-bottom: 6.4rem;
-  background-color: #050505;
+  background-color: #030303;
 }
 
 .contact-main a {
