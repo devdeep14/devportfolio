@@ -30,6 +30,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 
+
+
 </head>
 
 <body id="top">
@@ -407,21 +409,24 @@
             </ul>
             
         </div>
-
-        <div class="masonry-wrap" data-isotope-layout="fitRows" data-isotope-group="gallery">
+        
+        <div class="masonry-wrap">
             <div class="masonry">
                 <div class="grid-sizer"></div>
+
+                <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group">
+
 
                 <div class="masonry__brick isotope-item" data-filter="Type 1">
                     <div class="item-folio">
                             
                         <div class="item-folio__thumb">
-                            <a href="https://www.youtube.com/watch?v=-OSBJIwSFLc" title="Solar System">
+                            <a href="https://www.youtube.com/watch?v=xMYbLWwxJ3s" title="Solar System">
                                 <img src="images/portfolio/Solar.png"
                                      srcset="images/portfolio/Solar.png 1x, images/portfolio/Solar@2x.png 2x" alt="">
                             </a>
                             <!-- <a href="https://www.github.com" class="item-folio__project-linkleft" title="Git link" target="_blank"></a> -->
-                            <!-- <a href="https://www.youtube.com/watch?v=-OSBJIwSFLc" class="item-folio__project-link" title="Gameplay link" target="_blank"></a> -->
+                            <!-- <a href="https://www.youtube.com/watch?v=xMYbLWwxJ3s" class="item-folio__project-link" title="Gameplay link" target="_blank"></a> -->
                         </div>
 
                         <div class="item-folio__text">
@@ -670,8 +675,11 @@
                         </div>
                     </div>
                 </div> <!-- end masonry__brick -->
+
             </div> <!-- end masonry -->
         </div> <!-- end masonry-wrap -->
+
+        </div>
 
     </section> <!-- end s-work -->
 
@@ -886,7 +894,87 @@
     <!-- Java Script
     ================================================== -->
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
+    <!-- <script src="js/plugins.js"></script> -->
+    <script src="js/core.min.js"></script>
     <script src="js/main.js"></script>
+ 
+    <script>
+        "use strict";
+
+    (function () {
+    
+    // Global variables
+    var userAgent = navigator.userAgent.toLowerCase(),
+
+        plugins = {
+            isotope:                 $( ".isotope" ),
+        };
+
+    // Initialize scripts that require a finished document
+    $( function () {
+        
+        // Isotope
+        if ( plugins.isotope.length ) {
+            var isogroup = [];
+            for ( var i = 0; i < plugins.isotope.length; i++ ) {
+                var isotopeItem = plugins.isotope[ i ],
+                    isotopeInitAttrs = {
+                        itemSelector: '.isotope-item',
+                        layoutMode:   isotopeItem.getAttribute( 'data-isotope-layout' ) ? isotopeItem.getAttribute( 'data-isotope-layout' ) : 'masonry',
+                        filter:       '*'
+                    };
+
+                if ( isotopeItem.getAttribute( 'data-column-width' ) ) {
+                    isotopeInitAttrs.masonry = {
+                        columnWidth: parseFloat( isotopeItem.getAttribute( 'data-column-width' ) )
+                    };
+                } else if ( isotopeItem.getAttribute( 'data-column-class' ) ) {
+                    isotopeInitAttrs.masonry = {
+                        columnWidth: isotopeItem.getAttribute( 'data-column-class' )
+                    };
+                }
+
+                var iso = new Isotope( isotopeItem, isotopeInitAttrs );
+                isogroup.push( iso );
+            }
+
+
+            setTimeout( function () {
+                for ( var i = 0; i < isogroup.length; i++ ) {
+                    isogroup[ i ].element.className += " isotope--loaded";
+                    isogroup[ i ].layout();
+                }
+            }, 200 );
+
+            var resizeTimout;
+
+            $( "[data-isotope-filter]" ).on( "click", function ( e ) {
+                e.preventDefault();
+                var filter = $( this );
+                clearTimeout( resizeTimout );
+                filter.parents( ".isotope-filters" ).find( '.active' ).removeClass( "active" );
+                filter.addClass( "active" );
+                var iso = $( '.isotope[data-isotope-group="' + this.getAttribute( "data-isotope-group" ) + '"]' ),
+                    isotopeAttrs = {
+                        itemSelector: '.isotope-item',
+                        layoutMode:   iso.attr( 'data-isotope-layout' ) ? iso.attr( 'data-isotope-layout' ) : 'masonry',
+                        filter:       this.getAttribute( "data-isotope-filter" ) === '*' ? '*' : '[data-filter*="' + this.getAttribute( "data-isotope-filter" ) + '"]'
+                    };
+                if ( iso.attr( 'data-column-width' ) ) {
+                    isotopeAttrs.masonry = {
+                        columnWidth: parseFloat( iso.attr( 'data-column-width' ) )
+                    };
+                } else if ( iso.attr( 'data-column-class' ) ) {
+                    isotopeAttrs.masonry = {
+                        columnWidth: iso.attr( 'data-column-class' )
+                    };
+                }
+                iso.isotope( isotopeAttrs );
+            } ).eq( 0 ).trigger( "click" )
+        }
+
+    } );
+}());
+    </script>
 
 </body>
